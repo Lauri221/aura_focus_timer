@@ -5,7 +5,6 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -19,7 +18,7 @@ permissions:
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # Single deploy job since we're just deploying
@@ -35,6 +34,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache
+          restore-keys: |
+            ${{ runner.os }}-npm-cache
       - name: Install dependencies
         run: npm install
         working-directory: "replit app/timer_app"
