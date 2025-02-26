@@ -1,7 +1,7 @@
 {
   "name": "timer-app",
   "version": "1.0.0",
-  "homepage": "https://<your-username>.github.io/<repository-name>",
+  "homepage": "https://lauri221.github.io/aura_focus_timer/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
