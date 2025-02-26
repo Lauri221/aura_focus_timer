@@ -37,14 +37,16 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
+        working-directory: "replit app/timer_app"
       - name: Build project
         run: npm run build
+        working-directory: "replit app/timer_app"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build'
+          path: "replit app/timer_app/build"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
